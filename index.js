@@ -30,15 +30,14 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
           blob,
           "recorded_audio.ogg" /*audio file that was recorded*/
         );
-        fetch("/upload-audio" /*add server endpoint here*/, {
+        fetch("" /*add server endpoint here*/, {
           method: "POST",
           body: formData,
         })
-          .then((response) => {
-            // Handle the response from the server
-          })
+          .then((response) => response.json())
+          .then((data) => console.log(data))
           .catch((error) => {
-            // Handle any errors
+            console.log(error);
           });
       };
     })
@@ -128,7 +127,6 @@ const application = (index) => {
 
       addAudio();
       addButton("record", "record()", "Record Again");
-      SendFile.style.display = "block";
       break;
 
     default:
