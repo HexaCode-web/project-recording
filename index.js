@@ -30,12 +30,13 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
           blob,
           "recorded_audio.ogg" /*audio file that was recorded*/
         );
-        fetch("" /*add server endpoint here*/, {
+        fetch("http://localhost:9001/" /*add server endpoint here*/, {
           method: "POST",
           body: formData,
         })
-          .then((response) => response.json())
-          .then((data) => console.log(data))
+          .then((response) => {
+            console.log(response);
+          })
           .catch((error) => {
             console.log(error);
           });
